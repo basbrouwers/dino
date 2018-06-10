@@ -45,6 +45,9 @@ $router->group(['prefix' =>'/shelter'], function (Router $router) {
     $router->bind('owner', function ($id) {
         return app('Modules\Shelter\Repositories\OwnerRepository')->find($id);
     });
+
+
+    /**ROUTES FOR OWNERS*/
     $router->get('owners', [
         'as' => 'admin.shelter.owner.index',
         'uses' => 'OwnerController@index',
@@ -75,6 +78,16 @@ $router->group(['prefix' =>'/shelter'], function (Router $router) {
         'uses' => 'OwnerController@destroy',
         'middleware' => 'can:shelter.owners.destroy'
     ]);
+
+    /**ROUTES FOR Adopters*/
+    $router->get('adopters', [
+        'as' => 'admin.shelter.adopter.index',
+        'uses' => 'AdopterController@index',
+        'middleware' => 'can:shelter.owners.index'
+    ]);
+
+
+    /**ROUTES FOR BREEDS*/
     $router->bind('breed', function ($id) {
         return app('Modules\Shelter\Repositories\BreedRepository')->find($id);
     });

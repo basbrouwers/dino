@@ -4,9 +4,9 @@ return [
     'list resource' => 'List owners',
     'create resource' => 'Create owners',
     'edit resource' => 'Edit owners',
-    'destroy resource' => 'Destroy owsners',
+    'destroy resource' => 'Destroy owners',
     'title' => [
-        'owners' => 'Eigenaren',
+        'owners' => 'owner',
         'create owner' => 'Create a owner',
         'edit owner' => 'Edit a owner',
     ],

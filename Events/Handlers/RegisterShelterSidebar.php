@@ -46,7 +46,6 @@ class RegisterShelterSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 $item->item('Honden', function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
-                    $item->append('admin.shelter.animal.create');
                     $item->route('admin.shelter.animal.index',['type'=>'dog']);
                     $item->authorize(
                         $this->auth->hasAccess('shelter.animals.index')
@@ -54,33 +53,34 @@ class RegisterShelterSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 });$item->item('Katten', function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
-                    $item->append('admin.shelter.animal.create');
                     $item->route('admin.shelter.animal.index',['type'=>'cat']);
                     $item->authorize(
                         $this->auth->hasAccess('shelter.animals.index')
                     );
                 });
+                $item->item(trans('Adoptanten'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->route('admin.shelter.adopter.index');
+
+                });
                 $item->item(trans('shelter::owners.title.owners'), function (Item $item) {
                     $item->weight(0);
                     $item->icon('fa fa-users');
-                    $item->append('admin.shelter.owner.create');
                     $item->route('admin.shelter.owner.index');
                     $item->authorize(
-                        
+
                     );
                 });
                 $item->item(trans('shelter::breeds.title.breeds'), function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
-                    $item->append('admin.shelter.breed.create');
                     $item->route('admin.shelter.breed.index');
                     $item->authorize(
                         $this->auth->hasAccess('shelter.breeds.index')
                     );
                 });
 // append
-
-
 
             });
         });

@@ -8,6 +8,7 @@ return [
         'view' => 'shelter::animals.view resource',
         'destroy' => 'shelter::animals.destroy resource',
     ],
+
     'shelter.owners' => [
         'index' => 'shelter::owners.list resource',
         'create' => 'shelter::owners.create resource',

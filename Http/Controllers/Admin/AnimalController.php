@@ -13,6 +13,7 @@ use Modules\Shelter\Repositories\AnimalRepository;
 use Modules\Shelter\Repositories\BreedRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Shelter\Repositories\OwnerRepository;
+use Modules\Shelter\Repositories\AdopterRepository;
 
 class AnimalController extends AdminBaseController
 {
@@ -22,15 +23,15 @@ class AnimalController extends AdminBaseController
     private $animal;
     private $breeds;
 
-    public function __construct(AnimalRepository $animal, BreedRepository $breeds, OwnerRepository $owners)
+    public function __construct(AnimalRepository $animal, BreedRepository $breeds, OwnerRepository $owners, AdopterRepository $adopters)
     {
         parent::__construct();
         $this->assetPipeline->requireCss('shelteradmin.css');
 
-        $this->animal = $animal;
-        $this->breeds = $breeds;
-        $this->owners = $owners;
-
+        $this->animal   = $animal;
+        $this->breeds   = $breeds;
+        $this->owners   = $owners;
+        $this->adopters = $adopters;
     }
 
     /**
@@ -40,10 +41,13 @@ class AnimalController extends AdminBaseController
      */
     public function index(String $type)
     {
+        echo "<pre>";
+        var_dump($type);
+        die();
 
         $animals = $this->animal->all($type);
         $this->assetPipeline->requireCss('shelteradmin.css');
-        return view('shelter::admin.animals.index', ['animals' => $animals,'type'=>$type]);
+        return view('shelter::admin.animals.index', ['animals' => $animals, 'type' => $type]);
     }
 
     /**
@@ -60,11 +64,11 @@ class AnimalController extends AdminBaseController
      *
      * @return Response
      */
-    public function create(String $type='dog')
+    public function create(String $type = 'dog')
     {
         $breeds = $this->breeds->all()->sortBy('name')->pluck('name', 'id')->toArray();
         $owners = $this->owners->all()->sortBy('lastname')->pluck('lastname', 'id')->toArray();
-        return view('shelter::admin.animals.create', ['breeds' => $breeds, 'owners' => $owners,'type'=>$type]);
+        return view('shelter::admin.animals.create', ['breeds' => $breeds, 'owners' => $owners, 'type' => $type]);
     }
 
     /**
@@ -77,7 +81,7 @@ class AnimalController extends AdminBaseController
     {
         $this->animal->create($request->all());
 
-        return redirect()->route('admin.shelter.animal.index')
+        return redirect()->route('admin.shelter.animal.index', ['type' => 'dog'])
             ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('shelter::animals.title.animals')]));
     }
 
@@ -119,7 +123,7 @@ class AnimalController extends AdminBaseController
     {
         $this->animal->destroy($animal);
 
-        return redirect()->route('admin.shelter.animal.index')
+        return redirect()->route('admin.shelter.animal.index', ['type' => $animal['type']])
             ->withSuccess(trans('core::core.messages.resource deleted', ['name' => trans('shelter::animals.title.animals')]));
     }
 }

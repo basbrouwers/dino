@@ -1,6 +1,9 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-12">
+            @mediaMultiple('gallery', $animal)
+        </div>
+        <div class="col-md-12">
             {!! Form::normalInput('name','Naam', $errors, $animal) !!}
         </div>
     </div>

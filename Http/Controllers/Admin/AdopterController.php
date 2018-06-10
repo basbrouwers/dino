@@ -10,7 +10,7 @@ use Modules\Shelter\Http\Requests\UpdateOwnerRequest;
 use Modules\Shelter\Repositories\OwnerRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
-class OwnerController extends AdminBaseController
+class AdopterController extends OwnerController
 {
     /**
      * @var OwnerRepository
@@ -19,8 +19,6 @@ class OwnerController extends AdminBaseController
 
     public function __construct(OwnerRepository $owner)
     {
-        parent::__construct();
-
         $this->owner = $owner;
     }
 
@@ -32,6 +30,8 @@ class OwnerController extends AdminBaseController
      */
     public function index()
     {
+
+
         $owners = $this->owner->all();
 
         return view('shelter::admin.owners.index', compact('owners'));
