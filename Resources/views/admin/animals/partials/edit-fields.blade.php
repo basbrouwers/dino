@@ -1,5 +1,6 @@
 <div class="box-body">
     <div class="row">
+        <input type="hidden" name="type" value="{{$animal->type}}">
         <div class="col-md-12">
             @mediaMultiple('gallery', $animal)
         </div>

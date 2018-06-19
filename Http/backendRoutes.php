@@ -48,12 +48,12 @@ $router->group(['prefix' =>'/shelter'], function (Router $router) {
 
 
     /**ROUTES FOR OWNERS*/
-    $router->get('owners', [
+    $router->get('owners/{type?}', [
         'as' => 'admin.shelter.owner.index',
         'uses' => 'OwnerController@index',
         'middleware' => 'can:shelter.owners.index'
     ]);
-    $router->get('owners/create', [
+    $router->get('owners/create/{type?}', [
         'as' => 'admin.shelter.owner.create',
         'uses' => 'OwnerController@create',
         'middleware' => 'can:shelter.owners.create'
@@ -80,9 +80,9 @@ $router->group(['prefix' =>'/shelter'], function (Router $router) {
     ]);
 
     /**ROUTES FOR Adopters*/
-    $router->get('adopters', [
+    $router->get('adopters/{type}', [
         'as' => 'admin.shelter.adopter.index',
-        'uses' => 'AdopterController@index',
+        'uses' => 'OwnerController@index',
         'middleware' => 'can:shelter.owners.index'
     ]);
 

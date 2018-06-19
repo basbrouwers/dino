@@ -14,7 +14,8 @@ class EloquentOwnerRepository extends EloquentBaseRepository implements OwnerRep
      */
     public function all($type = 'owner')
     {
-        return $this->model->where('type',$type);
+
+        return $this->model->where('type',$type)->get();
     }
 
 }

@@ -61,7 +61,7 @@ class RegisterShelterSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                 $item->item(trans('Adoptanten'), function (Item $item) {
                     $item->icon('fa fa-copy');
                     $item->weight(0);
-                    $item->route('admin.shelter.adopter.index');
+                    $item->route('admin.shelter.owner.index',['type'=>'adoptant']);
 
                 });
                 $item->item(trans('shelter::owners.title.owners'), function (Item $item) {

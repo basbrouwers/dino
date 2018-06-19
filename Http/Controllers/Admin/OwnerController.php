@@ -30,9 +30,9 @@ class OwnerController extends AdminBaseController
      * @param string $type
      * @return Response
      */
-    public function index()
+    public function index($type='owner')
     {
-        $owners = $this->owner->all();
+        $owners = $this->owner->all($type);
 
         return view('shelter::admin.owners.index', compact('owners'));
     }
@@ -42,7 +42,7 @@ class OwnerController extends AdminBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create($type='owner')
     {
         return view('shelter::admin.owners.create');
     }

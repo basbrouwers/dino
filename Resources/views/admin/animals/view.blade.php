@@ -6,7 +6,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ route('admin.shelter.animal.index') }}">{{ trans('shelter::animals.title.animals') }}</a></li>
+        <li><a href="{{ route('admin.shelter.animal.index',['type'=>'dog']) }}">{{ trans('shelter::animals.title.animals') }}</a></li>
         <li class="active">{{ trans('shelter::animals.title.edit animal') }}</li>
     </ol>
 @stop
@@ -68,7 +68,7 @@
         $( document ).ready(function() {
             $(document).keypressAction({
                 actions: [
-                    { key: 'b', route: "<?=route('admin.shelter.animal.index')?>" }
+                    { key: 'b', route: "<?=route('admin.shelter.animal.index',['type'=>'dog'])?>" }
                 ]
             });
         });

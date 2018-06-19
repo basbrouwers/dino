@@ -29,6 +29,11 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th>Naam</th>
+
+                                <th>Voorletter(s)</th>
+                                <th>Plaats</th>
+
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
@@ -39,7 +44,22 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('admin.shelter.owner.edit', [$owner->id]) }}">
-                                        {{ $owner->created_at }}
+                                        {{ $owner->lastname}}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.shelter.owner.edit', [$owner->id]) }}">
+                                        {{ $owner->firstname}}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.shelter.owner.edit', [$owner->id]) }}">
+                                        {{ $owner->place}}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.shelter.owner.edit', [$owner->id]) }}">
+                                        {{ $owner->created_at}}
                                     </a>
                                 </td>
                                 <td>
