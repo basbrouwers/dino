@@ -2,7 +2,7 @@
     <div class="row">
         <input type="hidden" name="type" value="{{$animal->type}}">
         <div class="col-md-12">
-            @mediaMultiple('gallery', $animal)
+            @mediaSingle('profile_photo', $animal)
         </div>
         <div class="col-md-12">
             {!! Form::normalInput('name','Naam', $errors, $animal) !!}

@@ -2,6 +2,11 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-12">
+                @mediaSingle('profile_photo')
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 {!! Form::normalInput('name','Naam', $errors) !!}
             </div>
         </div>

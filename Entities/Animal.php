@@ -28,4 +28,9 @@ class Animal extends Model
     {
         return $this->belongsTo('Modules\Shelter\Entities\Owner');
     }
+
+    public function getProfilePictureAttribute()
+    {
+        return $this->filesByZone('profile_image')->first();
+    }
 }
